@@ -15,10 +15,6 @@ SELECT MAX(total_laid_off)
 FROM world_layoffs.layoffs_staging2;
 
 
-
-
-
-
 -- Looking at Percentage to see how big these layoffs were
 SELECT MAX(percentage_laid_off),  MIN(percentage_laid_off)
 FROM world_layoffs.layoffs_staging2
@@ -38,20 +34,6 @@ ORDER BY funds_raised_millions DESC;
 -- BritishVolt looks like an EV company, Quibi! I recognize that company - wow raised like 2 billion dollars and went under - ouch
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- SOMEWHAT TOUGHER AND MOSTLY USING GROUP BY--------------------------------------------------------------------------------------------------
 
 -- Companies with the biggest single Layoff
@@ -68,7 +50,6 @@ FROM world_layoffs.layoffs_staging2
 GROUP BY company
 ORDER BY 2 DESC
 LIMIT 10;
-
 
 
 -- by location
@@ -128,9 +109,6 @@ WHERE ranking <= 3
 AND years IS NOT NULL
 ORDER BY years ASC, total_laid_off DESC;
 
-
-
-
 -- Rolling Total of Layoffs Per Month
 SELECT SUBSTRING(date,1,7) as dates, SUM(total_laid_off) AS total_laid_off
 FROM layoffs_staging2
@@ -148,54 +126,3 @@ ORDER BY dates ASC
 SELECT dates, SUM(total_laid_off) OVER (ORDER BY dates ASC) as rolling_total_layoffs
 FROM DATE_CTE
 ORDER BY dates ASC;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
